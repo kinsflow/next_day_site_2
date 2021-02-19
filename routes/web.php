@@ -29,6 +29,6 @@ Route::group(['middleware' => ['isAdmin', 'auth']], function () {
     Route::post('/delete/{applicant_id}', [StudentController::class, 'delete'])->name('deleteAccount');
     Route::get('/edit/{applicant_id}', [StudentController::class, 'edit'])->name('editAccount');
     Route::post('/update/{applicant_id}', [StudentController::class, 'update'])->name('updateAccount');
-    Route::get('/student', [StudentController::class, 'index']);
+    Route::get('/student', [StudentController::class, 'index'])->name('all_student');
     Route::post('/create-account', [StudentController::class, 'createStudentAccount'])->name('createAccount');
 });
