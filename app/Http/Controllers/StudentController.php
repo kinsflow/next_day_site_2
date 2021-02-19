@@ -26,6 +26,7 @@ class StudentController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email|unique:users,email',
+            'image' => 'image|max:1024'
         ]);
 
         try {
@@ -33,9 +34,17 @@ class StudentController extends Controller
                 return redirect()->back()->with('failure', $validator->errors()->first());
             }
 
+            $image_file = $request->file('image');
+            if ($image_file){
+                $file_name = time() . '-' . $image_file->getClientOriginalName();
+
+                $path = $image_file->storeAs('applicants', $file_name, 'public');
+            }
+
             $request->merge([
                 'password' => bcrypt('password'),
-                'role_id' => 2
+                'role_id' => 2,
+                'image_path' => ($path ?? null)
             ]);
 
             User::create($request->all());

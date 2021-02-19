@@ -13,7 +13,7 @@
                         <div class="alert alert-success">{{Session::get('success')}}</div>
                     @endif
                     <a href="/student">View all Applicant</a>
-                <form method="POST" action="{{route('createAccount')}}">
+                <form method="POST" action="{{route('createAccount')}}" enctype="multipart/form-data">
                     <div class="panel panel-default">
                         @csrf
                         <div class="panel-body">
@@ -37,6 +37,14 @@
                                     <input type="email" name="email" class="form-control"/>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label>Photo </label>
+                                <div class="icon-holder">
+                                    <input type="file" name="image" class="form-control"/>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="panel-footer">
                             <button class="btn btn-primary btn-block">Create</button>

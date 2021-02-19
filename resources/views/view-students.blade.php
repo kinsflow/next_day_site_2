@@ -16,6 +16,7 @@
                 <th>Firstname</th>
                 <th>Lastname</th>
                 <th>Email</th>
+                <th>Image</th>
                 <th class="text-center" colspan="2">Actions</th>
             </tr>
             </thead>
@@ -25,6 +26,7 @@
                     <td>{{$applicant->first_name}}</td>
                     <td>{{$applicant->last_name}}</td>
                     <td>{{$applicant->email}}</td>
+                    <td><img style="height:3rem" src="{{asset('storage/'.$applicant->image_path)}}" alt="applicant image"></td>
                     <td>
                         <form method="POST" action="{{route('deleteAccount', ['applicant_id' => $applicant->id])}}">
                             @csrf

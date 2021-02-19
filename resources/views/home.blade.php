@@ -1,7 +1,11 @@
 @extends('layout')
 @section('content')
     <div class="container">
-        <h2 class="my-5 text-center">Welcome {{$user->first_name}}</h2>
+        <div class="d-flex my-4">
+            <h2 class="text-center">Welcome {{$user->first_name}}</h2>
+            <img style="height:3rem; margin-left: 1rem" class="img rounded-circle" src="{{asset('storage/'.$user->image_path)}}" alt="">
+        </div>
+
         @if (Session::has('failure'))
             <div class="alert alert-danger">{{Session::get('failure')}}</div>
         @endif
